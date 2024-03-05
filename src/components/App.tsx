@@ -1,5 +1,9 @@
-import "./App.less";
+import classes from "./App.module.less";
 
-const App = () => <div>Hellow World1235</div>;
+const App = () => (
+  <div>
+    <span className={classes.span}>Hellow World1235</span>
+  </div>
+);
 
 export default App;
