@@ -61,7 +61,7 @@ export default () => {
   if (isProduction) {
     config.mode = "production";
 
-    config.plugins!.push(new MiniCssExtractPlugin());
+    config.plugins.push(new MiniCssExtractPlugin());
   } else {
     config.mode = "development";
     config.devtool = "inline-source-map";

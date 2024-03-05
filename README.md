@@ -1,15 +1,12 @@
 # 🚀 Welcome to your new awesome project!
 
-This project has been created using **webpack-cli**, you can now run
+This is basic configuration for new React apps.
 
-```
-npm run build
-```
+Basic stack:
 
-or
-
-```
-yarn build
-```
-
-to bundle your application
+*React
+*TypeScript
+*Less
+*Prettier
+*ElSint
+*Husky
