@@ -1,7 +1,7 @@
 import React from "react";
-import "./Button.less";
+import classes from "./Button.module.less";
 
-interface ButtonProps {
+export interface ButtonProps {
   variant?: "text" | "contained" | "outlined";
   disabled?: boolean;
   onClick?: () => void;
@@ -26,7 +26,7 @@ const Button: React.FC<ButtonProps> = ({
     <button
       onClick={handleClick}
       disabled={disabled}
-      className={`button ${variant} ${size} ${disabled ? "disabled" : ""}`}
+      className={`${classes.button} ${classes[variant]} ${classes[size]} ${disabled ? classes.disabled : ""}`}
     >
       {children}
     </button>

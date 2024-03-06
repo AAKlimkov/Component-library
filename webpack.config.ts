@@ -41,11 +41,29 @@ const config: Configuration = {
       },
       {
         test: /\.css$/i,
-        use: [stylesHandler, "css-loader"],
+        use: [
+          stylesHandler,
+          {
+            loader: "css-loader",
+            options: {
+              modules: { localIdentName: "[path][name]__[local]" },
+            },
+          },
+        ],
       },
       {
         test: /\.less$/i,
-        use: [stylesHandler, "css-loader", "less-loader"],
+        use: [
+          stylesHandler,
+          {
+            loader: "css-loader",
+            options: {
+              modules: { localIdentName: "[path][name]__[local]" },
+            },
+          },
+          ,
+          "less-loader",
+        ],
       },
       {
         test: /\.(eot|svg|ttf|woff|woff2|png|jpg|gif)$/i,

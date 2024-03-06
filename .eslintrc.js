@@ -4,7 +4,12 @@ module.exports = {
     es2021: true,
     jest: true,
   },
-  extends: ["airbnb-base", "plugin:@typescript-eslint/recommended", "prettier"],
+  extends: [
+    "airbnb-base",
+    "plugin:@typescript-eslint/recommended",
+    "prettier",
+    "plugin:storybook/recommended"
+  ],
   overrides: [
     {
       env: {
