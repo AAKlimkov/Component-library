@@ -1,4 +1,5 @@
-import "./Checkbox.less";
+import React from "react";
+import styles from "./Checkbox.module.less";
 
 export interface CheckboxProps {
   checked: boolean;
@@ -20,14 +21,14 @@ const Checkbox: React.FC<CheckboxProps> = ({
   };
 
   return (
-    <label className={`checkbox ${disabled ? "disabled" : ""}`}>
+    <label className={`${styles.checkbox} ${disabled ? styles.disabled : ""}`}>
       <input
         type="checkbox"
         checked={checked}
         onChange={handleChange}
         disabled={disabled}
       />
-      {label && <span className="label">{label}</span>}
+      {label && <span className={styles.label}>{label}</span>}
     </label>
   );
 };

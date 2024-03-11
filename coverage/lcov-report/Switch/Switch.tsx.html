@@ -3,7 +3,7 @@
 <html lang="en">
 
 <head>
-    <title>Code coverage report for Checkbox/Checkbox.tsx</title>
+    <title>Code coverage report for Switch/Switch.tsx</title>
     <meta charset="utf-8" />
     <link rel="stylesheet" href="../prettify.css" />
     <link rel="stylesheet" href="../base.css" />
@@ -19,13 +19,13 @@
 <body>
 <div class='wrapper'>
     <div class='pad1'>
-        <h1><a href="../index.html">All files</a> / <a href="index.html">Checkbox</a> Checkbox.tsx</h1>
+        <h1><a href="../index.html">All files</a> / <a href="index.html">Switch</a> Switch.tsx</h1>
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>12/12</span>
+                <span class='fraction'>11/11</span>
             </div>
         
             
@@ -46,7 +46,7 @@
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>11/11</span>
+                <span class='fraction'>10/10</span>
             </div>
         
             
@@ -108,20 +108,20 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">3x</span>
-<span class="cline-any cline-yes">3x</span>
-<span class="cline-any cline-yes">3x</span>
-<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-yes">4x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">3x</span>
-<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -136,41 +136,41 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import React from "react";
-import styles from "./Checkbox.module.less";
+import styles from "./Switch.module.less";
 &nbsp;
-export interface CheckboxProps {
+export interface SwitchProps {
   checked: boolean;
   onChange: (checked: boolean) =&gt; void;
   disabled?: boolean;
-  label?: string;
 }
 &nbsp;
-const Checkbox: React.FC&lt;CheckboxProps&gt; = ({
+const Switch: React.FC&lt;SwitchProps&gt; = ({
   checked,
   onChange,
   disabled = false,
-  label,
 }) =&gt; {
-  const handleChange = () =&gt; {
+  const handleSwitchChange = () =&gt; {
     if (!disabled) {
       onChange(!checked);
     }
   };
 &nbsp;
   return (
-    &lt;label className={`${styles.checkbox} ${disabled ? styles.disabled : ""}`}&gt;
+    &lt;label
+      className={`${styles.switch} ${checked ? styles.checked : ""} ${disabled ? styles.disabled : ""}`}
+    &gt;
       &lt;input
         type="checkbox"
         checked={checked}
-        onChange={handleChange}
+        onChange={handleSwitchChange}
         disabled={disabled}
       /&gt;
-      {label &amp;&amp; &lt;span className={styles.label}&gt;{label}&lt;/span&gt;}
+      &lt;span className={styles.slider}&gt;&lt;/span&gt;
     &lt;/label&gt;
   );
 };
 &nbsp;
-export default Checkbox;
+export default Switch;
 &nbsp;</pre></td></tr></table></pre>
 
                 <div class='push'></div><!-- for sticky footer -->
