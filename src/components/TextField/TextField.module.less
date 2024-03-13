@@ -1,0 +1,100 @@
+.textfield {
+  margin-top: 10px;
+  position: relative;
+  max-width: 300px;
+}
+
+.label {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  left: 12px;
+  font-size: 14px;
+  color: #757575;
+  pointer-events: none;
+  transition:
+    font-size 0.2s,
+    transform 0.2s,
+    color 0.2s;
+  &.error {
+    top: 40%;
+  }
+}
+
+.input {
+  width: 100%;
+  padding: 16px;
+  font-size: 16px;
+  border-radius: 4px;
+  background-color: #fff;
+  transition: border-color 0.2s;
+  &::placeholder {
+    visibility: hidden;
+  }
+  &:focus,
+  &.focus-visible {
+    outline: none;
+    border-color: #1976d2;
+  }
+}
+
+.input:focus + .label,
+.input:not(:placeholder-shown) + .label {
+  font-size: 12px;
+  transform: translateY(-250%);
+  color: #2196f3;
+}
+
+.input.outlined {
+  border-right: none;
+  border-left: none;
+  border-top: none;
+  border-radius: 0px;
+  &.focus-visible,
+  &:hover {
+    outline: none;
+    border-width: 1px;
+    border-color: #1976d2;
+  }
+}
+
+.input.filled {
+  border-radius: 0px;
+  border-top: none;
+  border-right: none;
+  border-left: none;
+  border-color: black;
+  &.focus-visible,
+  &:hover {
+    outline: none;
+    border-width: 2px;
+    border-color: #1976d2;
+  }
+  background-color: #d0cbcb7a;
+}
+
+.standard {
+  border: 1px solid #bdbdbd;
+}
+.input.error {
+  color: black;
+  border-color: #f44336;
+  border-width: 1px;
+  &.focus-visible,
+  &:hover {
+    outline: none;
+    border-width: 2px;
+    border-color: #f44336;
+  }
+}
+.error {
+  color: #f44336;
+}
+
+.input.disabled {
+  background-color: #f5f5f5;
+  cursor: not-allowed;
+}
+#grayLabel {
+  color: black;
+}
