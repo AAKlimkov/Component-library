@@ -1,11 +1,19 @@
 import React, { useState } from "react";
+import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 
 import Modal from "./Modal/Modal";
+import TextField from "./TextField/TextField";
+import Select from "./Select/Select";
 
 /* eslint-disable no-console */
 
 const App: React.FC = () => {
   const [isOpen, setIsOpen] = useState<boolean>(false);
+  const options = [
+    { value: "option1", label: "Option 1" },
+    { value: "option2", label: "Option 2" },
+    { value: "option3", label: "Option 3" },
+  ];
 
   return (
     <div>
@@ -26,23 +34,6 @@ const App: React.FC = () => {
       />
       <h1>TextField Example</h1>
 
-      <TextField label="Standard Text Field" />
-      <TextField label="Outlined Text Field" variant="outlined" />
-      <TextField label="Filled Text Field" variant="filled" />
-      <TextField label="Disabled Text Field" disabled />
-
-      <TextField
-        label="Error Text Field"
-        error="This field is required"
-        variant="filled"
-      />
-
-      <TextField
-        label="Custom Styled Text Field"
-        variant="outlined"
-        error="Invalid input"
-        disabled
-      />
       <Switch checked={isSwitchOn} disabled onChange={handleSwitchChange} /> */}
       {/* <p>{isSwitchOn ? "Switch is ON" : "Switch is OFF"}</p> */}
       {/* <h1>Select Component Example</h1>
@@ -59,6 +50,25 @@ const App: React.FC = () => {
       </Select>
 
       <p>Selected Fruit: {selectedOption}</p> */}
+
+      <TextField label="Standard Text Field" icon={KeyboardArrowDownIcon} />
+      <TextField label="Outlined Text Field" variant="outlined" />
+      <TextField label="Filled Text Field" variant="filled" />
+      <TextField label="Disabled Text Field" disabled />
+
+      <TextField
+        label="Error Text Field"
+        error="This field is required"
+        variant="filled"
+        icon={KeyboardArrowDownIcon}
+      />
+
+      <TextField
+        label="Custom Styled Text Field"
+        variant="outlined"
+        error="Invalid input"
+        disabled
+      />
       <button onClick={() => setIsOpen(true)}>
         Show modal using a portal
         <Modal
@@ -70,6 +80,10 @@ const App: React.FC = () => {
           Children from App
         </Modal>
       </button>
+      <div>
+        <h1>Select Component Example</h1>
+        <Select options={options} />
+      </div>
     </div>
   );
 };

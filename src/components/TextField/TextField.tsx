@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+import { IconType } from "react-icons";
 import styles from "./TextField.module.less";
 
 export interface TextFieldProps {
@@ -6,6 +7,10 @@ export interface TextFieldProps {
   error?: string;
   label?: string;
   disabled?: boolean;
+  icon?: IconType;
+  onClick?: () => void;
+  readOnly?: boolean;
+  value?: string;
 }
 
 const TextField: React.FC<TextFieldProps> = ({
@@ -13,20 +18,31 @@ const TextField: React.FC<TextFieldProps> = ({
   error,
   label,
   disabled,
+  icon: Icon,
+  readOnly,
+  onClick,
+  value,
 }) => {
-  const [inputValue, setInputValue] = useState<string>("");
+  const [inputValue, setInputValue] = useState<string>(value ?? "");
   const [isFocused, setIsFocused] = useState<boolean>(false);
   const isError = !!error;
+
+  useEffect(() => {
+    setInputValue(value ?? "");
+  }, [value]);
 
   const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setInputValue(event.target.value);
   };
+
   const handleFocus = () => {
     setIsFocused(true);
   };
+
   const handleBlur = () => {
     setIsFocused(false);
   };
+
   return (
     <div
       className={`${styles.textfield} ${isError ? styles.error : ""} ${disabled ? styles.disabled : ""}`}
@@ -41,7 +57,10 @@ const TextField: React.FC<TextFieldProps> = ({
         onChange={handleInputChange}
         onFocus={handleFocus}
         onBlur={handleBlur}
+        readOnly={readOnly}
+        onClick={onClick}
       />
+
       {label && (
         <label
           id={`${inputValue && !isFocused ? styles.grayLabel : ""}`}
@@ -49,6 +68,9 @@ const TextField: React.FC<TextFieldProps> = ({
         >
           {label}
         </label>
+      )}
+      {Icon && (
+        <Icon className={`${styles.icon} ${isError ? styles.error : ""}`} />
       )}
       {isError && <span className={styles.error}>{error}</span>}
     </div>

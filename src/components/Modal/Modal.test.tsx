@@ -1,50 +1,38 @@
-// Modal.test.tsx
 import React from "react";
-import { render, screen, fireEvent } from "@testing-library/react";
 import "@testing-library/jest-dom";
+import { render, fireEvent, waitFor } from "@testing-library/react";
 import Modal from "./Modal";
 
-describe("Modal component", () => {
-  it("renders correctly when open", () => {
-    const onCloseMock = jest.fn();
-    render(
-      <Modal open={true} onClose={onCloseMock}>
-        <div>Modal Content</div>
-      </Modal>,
-    );
-
-    const modalContent = screen.getByText("Modal Content");
-    const closeButton = screen.getByText("Close");
-
-    expect(modalContent).toBeInTheDocument();
-    expect(closeButton).toBeInTheDocument();
+describe("Modal Component", () => {
+  it("renders without crashing", () => {
+    render(<Modal open={true}>Test Modal</Modal>);
   });
 
-  it("does not render when closed", () => {
-    render(
-      <Modal open={false}>
-        <div>Modal Content</div>
-      </Modal>,
-    );
-
-    const modalContent = screen.queryByText("Modal Content");
-    const closeButton = screen.queryByText("Close");
-
-    expect(modalContent).not.toBeInTheDocument();
-    expect(closeButton).not.toBeInTheDocument();
+  it("renders children when open prop is true", () => {
+    const { getByText } = render(<Modal open={true}>Test Modal</Modal>);
+    expect(getByText("Test Modal")).toBeInTheDocument();
   });
 
-  it("calls onClose when Close button is clicked", () => {
-    const onCloseMock = jest.fn();
-    render(
-      <Modal open={true} onClose={onCloseMock}>
-        <div>Modal Content</div>
+  it("does not render children when open prop is false", () => {
+    const { queryByText } = render(<Modal open={false}>Test Modal</Modal>);
+    expect(queryByText("Test Modal")).toBeNull();
+  });
+
+  it("calls onClose when close button is clicked", async () => {
+    const onClose = jest.fn();
+    const { getByText } = render(
+      <Modal open={true} onClose={onClose}>
+        Test Modal
       </Modal>,
     );
+    fireEvent.click(getByText("Close"));
+    await waitFor(() => expect(onClose).toHaveBeenCalled());
+  });
 
-    const closeButton = screen.getByText("Close");
-    fireEvent.click(closeButton);
-
-    expect(onCloseMock).toHaveBeenCalled();
+  it("does not call onClose when close button is clicked and onClose is not provided", async () => {
+    const onClose = jest.fn();
+    const { getByText } = render(<Modal open={true}>Test Modal</Modal>);
+    fireEvent.click(getByText("Close"));
+    await waitFor(() => expect(onClose).not.toHaveBeenCalled());
   });
 });
