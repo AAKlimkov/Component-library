@@ -1,0 +1,38 @@
+.selectContainer {
+  position: relative;
+  display: inline-block;
+}
+
+.select-dropdown {
+  position: absolute;
+  top: 80%;
+  left: 0;
+  z-index: 999;
+  background-color: #ffffff;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+  border-radius: 4px;
+  padding: 8px;
+}
+
+.select-option {
+  cursor: pointer;
+  padding: 8px;
+  transition: background-color 0.3s ease;
+
+  &:hover {
+    background-color: #f0f0f0;
+  }
+}
+
+.select-textfield {
+  display: flex;
+  align-items: center;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  cursor: pointer;
+
+  .icon {
+    margin-left: auto;
+  }
+}

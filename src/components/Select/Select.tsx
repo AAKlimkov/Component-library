@@ -3,22 +3,20 @@ import ReactDOM from "react-dom";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 import KeyboardArrowUpIcon from "@mui/icons-material/KeyboardArrowUp";
 import TextField from "../TextField/TextField";
+import styles from "./Select.module.less";
 /* eslint-disable no-console */
-interface Option {
+export interface Option {
   value: string;
   label: string;
 }
 
-interface SelectProps {
+export interface SelectProps {
   options: Option[];
 }
 
 const Select: React.FC<SelectProps> = ({ options }) => {
   const [isOpen, setIsOpen] = useState(false);
-  const [selectedOption, setSelectedOption] = useState<Option | null>({
-    value: "option1",
-    label: "Option 1",
-  });
+  const [selectedOption, setSelectedOption] = useState<Option | null>();
   const toggleDropdown = () => setIsOpen(!isOpen);
   const dropdownRef = useRef<HTMLDivElement>(null);
 
@@ -44,22 +42,22 @@ const Select: React.FC<SelectProps> = ({ options }) => {
   };
 
   return (
-    <div ref={dropdownRef}>
+    <div ref={dropdownRef} className={styles.selectContainer}>
       <TextField
         icon={isOpen ? KeyboardArrowUpIcon : KeyboardArrowDownIcon}
         onClick={toggleDropdown}
         value={selectedOption ? selectedOption.label : ""}
+        label="make your choise"
         readOnly
       />
       {isOpen &&
         ReactDOM.createPortal(
-          <div
-            style={{ position: "absolute", top: "80%", left: 0, zIndex: 999 }}
-          >
+          <div className={styles["select-dropdown"]}>
             {options.map((option) => (
               <div
                 key={option.value}
                 onClick={() => handleOptionSelect(option)}
+                className={styles["select-option"]}
               >
                 {option.label}
               </div>
