@@ -1,8 +1,11 @@
 {
   "name": "material-ui-study",
-  "version": "1.0.2",
+  "version": "1.0.4",
   "description": "My webpack project",
-  "main": "index.js",
+  "main": "src/index.ts",
+  "files": [
+    "src/**/*"
+  ],
   "scripts": {
     "test": "jest --coverage",
     "build": "webpack --mode=production --node-env=production ",

@@ -16,5 +16,5 @@
     }
   },
   "include": ["src/**/*.ts", "src/**/*.tsx", "src/**/*.less"],
-  "files": ["src/index.tsx"]
+  "files": ["src/index.ts"]
 }
