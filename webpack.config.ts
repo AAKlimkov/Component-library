@@ -15,7 +15,7 @@ interface Configuration extends WebpackConfiguration {
 }
 
 const config: Configuration = {
-  entry: "./src/index.tsx",
+  entry: "./src/index.ts",
   output: {
     path: path.resolve(__dirname, "dist"),
     filename: "[name]-[fullhash].js",

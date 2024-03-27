@@ -8,13 +8,15 @@
     "esModuleInterop": true,
     "jsx": "react-jsx",
     "moduleResolution": "node",
-    "types": ["jest", "node"]
+    "types": ["jest", "node"],
+    "outDir": "./dist/",
+    "declaration": true
   },
   "ts-node": {
     "compilerOptions": {
       "module": "CommonJS"
     }
   },
-  "include": ["src/**/*.ts", "src/**/*.tsx", "src/**/*.less", "src/index.tsx"],
-  "files": ["src/index.tsx"]
+  "include": ["src/**/*.ts", "src/**/*.tsx", "src/**/*.less", "src/index.ts"],
+  "files": ["src/index.ts"]
 }
