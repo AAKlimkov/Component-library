@@ -1,4 +1,5 @@
 .textfield {
+  box-sizing: content-box;
   margin-top: 10px;
   position: relative;
   max-width: 300px;
@@ -43,6 +44,11 @@
   font-size: 12px;
   transform: translateY(-250%);
   color: #2196f3;
+  background-color: white;
+  &.error {
+    color: red;
+    background-color: #d0cbcb7a;
+  }
 }
 
 .input.outlined {

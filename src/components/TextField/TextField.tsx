@@ -24,7 +24,6 @@ const TextField: React.FC<TextFieldProps> = ({
   value,
 }) => {
   const [inputValue, setInputValue] = useState<string>(value ?? "");
-  const [isFocused, setIsFocused] = useState<boolean>(false);
   const isError = !!error;
 
   useEffect(() => {
@@ -33,14 +32,6 @@ const TextField: React.FC<TextFieldProps> = ({
 
   const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setInputValue(event.target.value);
-  };
-
-  const handleFocus = () => {
-    setIsFocused(true);
-  };
-
-  const handleBlur = () => {
-    setIsFocused(false);
   };
 
   return (
@@ -55,17 +46,12 @@ const TextField: React.FC<TextFieldProps> = ({
         disabled={disabled}
         value={inputValue}
         onChange={handleInputChange}
-        onFocus={handleFocus}
-        onBlur={handleBlur}
         readOnly={readOnly}
         onClick={onClick}
       />
 
       {label && (
-        <label
-          id={`${inputValue && !isFocused ? styles.grayLabel : ""}`}
-          className={`${styles.label} ${isError ? styles.error : ""}`}
-        >
+        <label className={`${styles.label} ${isError ? styles.error : ""}`}>
           {label}
         </label>
       )}

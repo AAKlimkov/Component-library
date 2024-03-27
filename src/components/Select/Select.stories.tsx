@@ -22,8 +22,10 @@ Default.args = {
 
 export const WithSelectedOption = Template.bind({});
 WithSelectedOption.args = {
-  options,
-  selectedOption: options[1],
+  options: [
+    ...options,
+    { value: "option2", label: "Option 2", selected: true },
+  ],
 };
 
 export const WithDisabled = Template.bind({});
